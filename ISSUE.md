@@ -1,8 +1,7 @@
 # Issue text for espressif/llvm-project
 
 Espressif's repositories share one bug-report form. The headings below are
-its fields, in order, with the text to paste into each. Replace
-`<repo-url>` with this repository's URL once it is pushed.
+its fields, in order, with the text to paste into each.
 
 Title:
 
@@ -64,7 +63,7 @@ on the 32-bit target) the edge array sits at an offset that folds to one of
 these constants and the crate fails to compile; changing the value type's
 size by a byte makes it compile again, so projects hit this at random when
 a struct in a `BTreeMap` changes size. Reproducer and details in
-`<repo-url>`.
+https://github.com/aeolionics-rs/xtensa-ice.
 
 ## Error logs or terminal output
 
@@ -92,7 +91,7 @@ Stack dump:
 ```
 
 (Full backtraces: `llc-crash.txt` for 21.1.3 and `llc-crash-22.1.4.txt`
-for 22.1.4 in `<repo-url>`.)
+for 22.1.4 in https://github.com/aeolionics-rs/xtensa-ice.)
 
 ## Steps to reproduce the behavior
 
@@ -128,7 +127,7 @@ exit:
    or `4092`: aborts with `Constant<2304>` or `Constant<4096>`.
 
 To see it from Rust (no ESP-IDF needed, the crate doesn't link): in
-`<repo-url>`, `cd btree_ice && cargo build --release` with the `esp`
+https://github.com/aeolionics-rs/xtensa-ice, `cd btree_ice && cargo build --release` with the `esp`
 toolchain (espup) fails the same way in
 `alloc::collections::btree::node::NodeRef<Mut, u8, [u8; 184], Internal>::correct_childrens_parent_links`.
 `repro.sh` runs both.
@@ -160,7 +159,7 @@ Bash
 
 - The Rust reproducer, the crate's full IR, the one failing function cut
   from it (80 lines, also rejected by `llc -O1`) and the raw sweep logs are
-  in `<repo-url>`.
+  in https://github.com/aeolionics-rs/xtensa-ice.
 - Sizes swept for `BTreeMap<u8, [u8; N]>`: even N from 150 to 260 plus
   some odd ones; only 184 (`Constant<2048>`), 231 (`Constant<2560>`) and
   254 (`Constant<2816>`) fail. At N = 184 the node layout is values at 0
