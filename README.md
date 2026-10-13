@@ -26,6 +26,7 @@ The crash reproduces with plain `llc` from esp-clang on a 17-line IR file
 ## Versions
 
 - esp-clang `esp-21.1.3_20260408` (`llc --version`: Espressif LLVM version 21.1.3, optimized build), Linux x86_64 host
+- Also reproduced with the `llc` from the latest release, esp-clang `esp-22.1.4_20260825` (Espressif LLVM version 22.1.4): `loop-2048.ll`, the reduced function and the full crate IR all fail the same way at `-O1` and `-O2` (`llc-crash-22.1.4.txt`)
 - Rust `esp` toolchain from espup 0.18.0: `rustc 1.97.0-nightly (8ea53bcd7 2026-07-08) (1.97.0.0)`, LLVM version 21.1.3, host `x86_64-unknown-linux-gnu`
 - Target `xtensa-esp32s3-espidf` (rustc), triple `xtensa-unknown-none-elf` in the emitted IR; `-mcpu=esp32s3` makes no difference
 
@@ -201,6 +202,7 @@ workaround, but the fix doesn't belong there.
 - `btree-do_merge-reduced.ll`: the failing function from the Rust crate's IR, reduced
 - `btree_ice-n184-full.ll`: the crate's full IR at N = 184
 - `btree_ice/`: the Rust crate
-- `llc-crash.txt`: full `llc` output with backtrace
+- `llc-crash.txt`: full `llc` output with backtrace (21.1.3); `llc-crash-22.1.4.txt`: the same with 22.1.4
+- `ISSUE.md`: the report laid out in the fields of Espressif's bug-report form, ready to paste
 - `sweep-array.log`, `sweep-odd.log`, `optlevels.log`: raw sweep results
 - `repro.sh`: runs the cargo build and the `llc` reproducer

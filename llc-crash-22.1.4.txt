@@ -1,0 +1,36 @@
+Espressif LLVM version 22.1.4
+  Optimized build.
+
+$ llc -O1 loop-2048.ll -o /dev/null
+LLVM ERROR: Cannot select: 0x593b52ba64f0: i32 = Constant<2048>
+In function: f
+PLEASE submit a bug report to https://github.com/espressif/esp-llvm-embedded-toolchain/issues and include the crash backtrace and instructions to reproduce the bug.
+Stack dump:
+0.	Program arguments: llc -O1 loop-2048.ll -o /dev/null
+1.	Running pass 'Function Pass Manager' on module 'loop-2048.ll'.
+2.	Running pass 'Xtensa DAG->DAG Pattern Instruction Selection' on function '@f'
+Stack dump without symbol names (ensure you have llvm-symbolizer in your PATH or set the environment var `LLVM_SYMBOLIZER_PATH` to point to it):
+0  llc       0x0000593b4d179eab llvm::sys::PrintStackTrace(llvm::raw_ostream&, int) + 59
+1  llc       0x0000593b4d176e3c
+2  libc.so.6 0x000077a2f1645cb0
+3  libc.so.6 0x000077a2f16a61ac pthread_kill + 284
+4  libc.so.6 0x000077a2f1645b7e gsignal + 30
+5  libc.so.6 0x000077a2f16288ec abort + 39
+6  llc       0x0000593b4d0c3476
+7  llc       0x0000593b4cf35cfc llvm::SelectionDAGISel::CannotYetSelect(llvm::SDNode*) + 316
+8  llc       0x0000593b4cf39e02 llvm::SelectionDAGISel::SelectCodeCommon(llvm::SDNode*, unsigned char const*, unsigned int) + 9778
+9  llc       0x0000593b4bb9efe3
+10 llc       0x0000593b4cf33969 llvm::SelectionDAGISel::DoInstructionSelection() + 505
+11 llc       0x0000593b4cf3e76b llvm::SelectionDAGISel::CodeGenAndEmitDAG() + 859
+12 llc       0x0000593b4cf41742 llvm::SelectionDAGISel::SelectAllBasicBlocks(llvm::Function const&) + 6146
+13 llc       0x0000593b4cf42e4c llvm::SelectionDAGISel::runOnMachineFunction(llvm::MachineFunction&) + 284
+14 llc       0x0000593b4cf33561 llvm::SelectionDAGISelLegacy::runOnMachineFunction(llvm::MachineFunction&) + 241
+15 llc       0x0000593b4c107ae9 llvm::MachineFunctionPass::runOnFunction(llvm::Function&) + 489
+16 llc       0x0000593b4c69af21 llvm::FPPassManager::runOnFunction(llvm::Function&) + 1121
+17 llc       0x0000593b4c69b0a1 llvm::FPPassManager::runOnModule(llvm::Module&) + 49
+18 llc       0x0000593b4c69baad llvm::legacy::PassManagerImpl::run(llvm::Module&) + 925
+19 llc       0x0000593b4b875286
+20 llc       0x0000593b4b875f3c main + 1180
+21 libc.so.6 0x000077a2f162a601
+22 libc.so.6 0x000077a2f162a718 __libc_start_main + 136
+23 llc       0x0000593b4b86902a _start + 42
