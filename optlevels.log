@@ -1,0 +1,6 @@
+opt-level=0 ok
+opt-level=1 CRASH Constant<2048>
+opt-level=2 CRASH Constant<2048>
+opt-level=3 CRASH Constant<2048>
+opt-level=z ok
+opt-level=s CRASH Constant<2048>

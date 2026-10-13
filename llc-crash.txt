@@ -1,0 +1,30 @@
+LLVM ERROR: Cannot select: 0x58f57bb20bf0: i32 = Constant<2048>
+In function: _RINvMs10_NtNtNtCsbIaysLmJLTs_5alloc11collections5btree4nodeINtB7_16BalancingContexthAhjb8_E8do_mergeNCINvB2_20merge_tracking_childNtNtBd_5alloc6GlobalE0INtB7_7NodeRefNtNtB7_6marker3MuthB1k_NtB2G_14LeafOrInternalEB24_ECs8pLgv9eiclp_9btree_ice
+PLEASE submit a bug report to https://github.com/espressif/esp-llvm-embedded-toolchain/issues and include the crash backtrace.
+Stack dump:
+0.	Program arguments: ~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc -O1 n184.ll -o /dev/null
+1.	Running pass 'Function Pass Manager' on module 'n184.ll'.
+2.	Running pass 'Xtensa DAG->DAG Pattern Instruction Selection' on function '@_RINvMs10_NtNtNtCsbIaysLmJLTs_5alloc11collections5btree4nodeINtB7_16BalancingContexthAhjb8_E8do_mergeNCINvB2_20merge_tracking_childNtNtBd_5alloc6GlobalE0INtB7_7NodeRefNtNtB7_6marker3MuthB1k_NtB2G_14LeafOrInternalEB24_ECs8pLgv9eiclp_9btree_ice'
+ #0 0x000058f56b1eceef llvm::sys::PrintStackTrace(llvm::raw_ostream&, int) (~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc+0x1dd9eef)
+ #1 0x000058f56b1e9f14 SignalHandler(int, siginfo_t*, void*) Signals.cpp:0:0
+ #2 0x0000707072445cb0 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x45cb0)
+ #3 0x00007070724a61ac pthread_kill (/usr/lib/x86_64-linux-gnu/libc.so.6+0xa61ac)
+ #4 0x0000707072445b7e raise (/usr/lib/x86_64-linux-gnu/libc.so.6+0x45b7e)
+ #5 0x00007070724288ec abort (/usr/lib/x86_64-linux-gnu/libc.so.6+0x288ec)
+ #6 0x000058f569895f35 llvm::DisplayGraph(llvm::StringRef, bool, llvm::GraphProgram::Name) (.cold) GraphWriter.cpp:0:0
+ #7 0x000058f56af7ba44 llvm::SelectionDAGISel::CannotYetSelect(llvm::SDNode*) (~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc+0x1b68a44)
+ #8 0x000058f56af81abd llvm::SelectionDAGISel::SelectCodeCommon(llvm::SDNode*, unsigned char const*, unsigned int) (~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc+0x1b6eabd)
+ #9 0x000058f569c88a67 (anonymous namespace)::XtensaDAGToDAGISel::Select(llvm::SDNode*) XtensaISelDAGToDAG.cpp:0:0
+#10 0x000058f56af7882c llvm::SelectionDAGISel::DoInstructionSelection() (~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc+0x1b6582c)
+#11 0x000058f56af87996 llvm::SelectionDAGISel::CodeGenAndEmitDAG() (~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc+0x1b74996)
+#12 0x000058f56af8a38d llvm::SelectionDAGISel::SelectAllBasicBlocks(llvm::Function const&) (~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc+0x1b7738d)
+#13 0x000058f56af8c1fd llvm::SelectionDAGISel::runOnMachineFunction(llvm::MachineFunction&) (~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc+0x1b791fd)
+#14 0x000058f56af78389 llvm::SelectionDAGISelLegacy::runOnMachineFunction(llvm::MachineFunction&) (~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc+0x1b65389)
+#15 0x000058f56a1f104f llvm::MachineFunctionPass::runOnFunction(llvm::Function&) (~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc+0xdde04f)
+#16 0x000058f56a7a00b2 llvm::FPPassManager::runOnFunction(llvm::Function&) (~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc+0x138d0b2)
+#17 0x000058f56a7a0349 llvm::FPPassManager::runOnModule(llvm::Module&) (~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc+0x138d349)
+#18 0x000058f56a7a1d39 llvm::legacy::PassManagerImpl::run(llvm::Module&) (~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc+0x138ed39)
+#19 0x000058f5698ae697 main (~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc+0x49b697)
+#20 0x000070707242a601 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a601)
+#21 0x000070707242a718 __libc_start_main (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a718)
+#22 0x000058f56997da8e _start (~/.espressif/tools/esp-clang/esp-21.1.3_20260408/esp-clang/bin/llc+0x56aa8e)
