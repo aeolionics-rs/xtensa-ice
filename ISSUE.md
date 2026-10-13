@@ -1,7 +1,8 @@
 # Issue text for espressif/llvm-project
 
-Espressif's repositories share one bug-report form. The headings below are
-its fields, in order, with the text to paste into each.
+Filed as https://github.com/espressif/llvm-project/issues/141 on
+2026-10-13. Espressif's repositories share one bug-report form; the headings
+below are its fields, in order, with the text that was submitted.
 
 Title:
 

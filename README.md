@@ -1,5 +1,7 @@
 # Xtensa backend: `Cannot select: i32 = Constant<2048>` for folded address constants that are multiples of 256
 
+Filed as [espressif/llvm-project#141](https://github.com/espressif/llvm-project/issues/141).
+
 ## Summary
 
 Instruction selection for Xtensa aborts with `LLVM ERROR: Cannot select:
